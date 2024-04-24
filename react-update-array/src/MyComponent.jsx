@@ -11,7 +11,7 @@ function MyComponent() {
         <div>
             <h1>List of foods</h1>
             <ul>
-                <li> {foods.map()} </li>
+                {foods.map((food,index) => <li key={index}> {food} </li>)}
             </ul>
         </div>
     );

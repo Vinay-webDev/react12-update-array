@@ -17,7 +17,9 @@ function MyComponent() {
         /* inorder to clear the input after adding the food element 
         we can do that by */
         document.getElementById("food-input").value = "";
-        
+        /* so now we need to use spread operator */
+        /* it's always good practice to have updater fucntion */
+        setFoods(f => [...f, newFood]);
     }
     function handleRemoveFoods() {
 
@@ -25,9 +27,9 @@ function MyComponent() {
     return(
         <div>
             <h1>List of foods</h1>
-            <ol>
-                {foods.map((food,index) => <li key={index}> {food} </li>)}
-            </ol>
+            <ul>
+                {foods.map((food, index) => <li key={index}> {food} </li>)}
+            </ul>
             <input type="text" id="food-input" placeholder="Enter food name"/>
             <button onClick={handleAddFoods} > Add food </button>
         </div>

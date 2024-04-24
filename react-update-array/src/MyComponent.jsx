@@ -21,14 +21,19 @@ function MyComponent() {
         /* it's always good practice to have updater fucntion */
         setFoods(f => [...f, newFood]);
     }
-    function handleRemoveFoods() {
-
+    function handleRemoveFoods(index) {
+        //setFoods([]); // this will clear all elements in a array
+        /* this is most complicated method and it takes an argument 
+        and we need to use .filter() built-in array method*/
+        setFoods(foods.filter((_, i) => i !== index));
     }
     return(
         <div>
             <h1>List of foods</h1>
             <ul>
-                {foods.map((food, index) => <li key={index}> {food} </li>)}
+                {foods.map((food, index) => 
+                <li key={index} onClick={() => handleRemoveFoods(index)} >
+                 {food} </li>)}
             </ul>
             <input type="text" id="food-input" placeholder="Enter food name"/>
             <button onClick={handleAddFoods} > Add food </button>
